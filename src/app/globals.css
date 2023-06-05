@@ -15,6 +15,7 @@ a {
   color: inherit;
 }
 
+/* Dark&Light Mode transition */
 .theme{
   transition: 1s all ease;
 }
