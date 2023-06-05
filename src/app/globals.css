@@ -19,11 +19,13 @@ a {
   transition: 1s all ease;
 }
 
+/* Light Mode */
 .light {
   background-color: white;
   color: #111;
 }
 
+/* Dark Mode */
 .dark {
   background-color: #111;
   color: #bbb;
