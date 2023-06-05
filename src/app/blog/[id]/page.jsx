@@ -6,8 +6,7 @@ import { notFound } from "next/navigation";
 //Get one post from DB
 
 async function getData(id) {
-  // const res = await fetch(`http://localhost:3000/api/posts/${id}`, {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+  const res = await fetch(`http://localhost:3000/api/posts/${id}`, {
     cache: "no-store",
   });
 
@@ -19,15 +18,14 @@ async function getData(id) {
 }
 
 //Make metadata for one post
+export async function generateMetadata({ params }) {
 
-// export async function generateMetadata({ params }) {
-
-//   const post = await getData(params.id)
-//   return {
-//     title: post.title,
-//     description: post.desc,
-//   };
-// }
+  const post = await getData(params.id)
+  return {
+    title: post.title,
+    description: post.desc,
+  };
+}
 
 //Get one post
 const BlogPost = async ({ params }) => {
@@ -45,8 +43,7 @@ const BlogPost = async ({ params }) => {
         </p>
         <div className={styles.author}>
           <Image
-            // src={data.img}
-            src="https://images.pexels.com/photos/3130810/pexels-photo-3130810.jpeg"
+            src={data.image}
             alt=""
             width={40}
             height={40}
@@ -57,8 +54,7 @@ const BlogPost = async ({ params }) => {
       </div>
       <div className={styles.imageContainer}>
         <Image
-          // src={data.img}
-          src="https://images.pexels.com/photos/3130810/pexels-photo-3130810.jpeg"
+          src={data.image}
           alt=""
           fill={true}
           className={styles.image}

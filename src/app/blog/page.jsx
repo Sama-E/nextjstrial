@@ -6,21 +6,15 @@ import Image from "next/image";
 //Fetch posts from DB
 
 async function getData() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts",
-  {
+  const res = await fetch(`http://localhost:3000/api/posts`, {
     cache: "no-store",
   });
 
-
-// async function getData() {
-//   const res = await fetch("http://localhost:3000/api/posts", {
-//     cache: "no-store",
-//   });
+  console.log(res);
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
-
   return res.json();
 }
 
@@ -32,11 +26,10 @@ const Blog = async () => {
   return (
     <div className={styles.mainContainer}>
     {data.map((item) => (
-      // <Link href={`/blog/${item._id}`} className={styles.container} key={item.id}>
-        <Link href="/blog/testId" className={styles.container} key={item.id}>
+      <Link href={`/blog/${item._id}`} className={styles.container} key={item.id}>
         <div className={styles.imageContainer}>
           <Image
-            src={item.img}
+            src={item.image}
             alt=""
             width={400}
             height={250}
